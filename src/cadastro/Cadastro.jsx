@@ -14,4 +14,6 @@ const Cadastro = () => {
     );
 };
 
-export default Cadastro
+export default Cadastro  
+//git config --global user.email "you@example.com"
+//git config --global user.name "Your Name"
