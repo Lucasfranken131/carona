@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes , BrowserRouter } from "react-router-dom";
 
-import Cadastro from "./components/cadastro/cadastro";
-import Chamada from './components/chamada/chamada';
-import Home from "./components/home/home";
-import Index from './components/index/index';
-import Login from "./components/login/login";
-import Perfil from './components/perfil/perfil';
+import Cadastro from "./carona_solidaria/cadastro/cadastro";
+import Chamada from './carona_solidaria/chamada/chamada';
+import Home from "./carona_solidaria/home/home";
+import Index from './carona_solidaria/index/index';
+import Login from "./carona_solidaria/login/login";
+import Perfil from './carona_solidaria/perfil/perfil';
 
 function AppRoutes(){
    return(

@@ -1,0 +1,27 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    background-color: #B85E5E;
+    align-items: center;
+    justify-content: center;
+}
+
+#home {
+    font-size: 35px;
+    color: white;
+    padding-right: 20px;
+}
+
+#profile-picture {
+    margin-left: 5px;
+    margin-top: 4px;
+    height: 30px;
+    width: 30px;
+    border: solid black 1px;
+    border-radius: 80px;
+}
+
+#sair {
+    margin-left: 10px;
+}

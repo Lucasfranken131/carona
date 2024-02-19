@@ -1,11 +1,10 @@
 import React from 'react';
-// @ts-ignore
-import Header from '../header/header';
+import Nav from '../nav/nav';
 
 const Index = () => {
   return (
     <div>
-      <Header/>
+      <Nav/>
       <h1>Carona solidária</h1>
       <p>Bem-vindo ao projeto Carona Solidária!</p>
     </div>
