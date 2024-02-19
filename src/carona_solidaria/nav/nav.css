@@ -1,16 +1,34 @@
 .nav-bar {
     display: flex;
     flex-direction: row;
-    height: 60px;
+    height: 20%;
     background-color: #B85E5E;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-#home {
+#company-name {
+    margin-left: 10px;
     font-size: 35px;
-    color: white;
-    padding-right: 20px;
+    margin-top: 0.7%;
+    margin-right: 15px;
+}
+
+#company-logo-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    margin-top: 4px;
+    height: 30px;
+    width: 50px;
+}
+
+#profile-nav {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1%;
 }
 
 #profile-picture {
@@ -23,5 +41,5 @@
 }
 
 #sair {
-    margin-left: 10px;
+    margin-left: 0.5%;
 }

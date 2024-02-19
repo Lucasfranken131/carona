@@ -1,6 +1,9 @@
+import Nav from '../nav/nav';
+
 const Home = () => {
     return(
         <div>
+            <Nav/>
             <h1>Carona Solidária</h1>
             <p>
                 Bem-vindo ao nosso sistema de carona solidária! Nosso objetivo é conectar motoristas com 
