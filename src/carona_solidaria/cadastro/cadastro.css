@@ -1,41 +1,35 @@
-body {
+.container {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  height: 200%;
+  margin: auto;
+  margin-top: 5%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 80%; 
 }
-
-input {
+.container h1{
+  margin: 1%;
+}
+.container input {
   width: calc(100% - 22px);
   padding: 10px;
-  margin: 10px 0;
+  margin: 1%;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
-input:focus {
-  border-color: #007bff;
-}
-
-input[type="submit"] {
+.container input[type="submit"] {
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+.container input[type="submit"]:hover {
   background-color: #0056b3;
 }

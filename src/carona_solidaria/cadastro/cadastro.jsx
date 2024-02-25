@@ -7,6 +7,7 @@ const Cadastro = () => {
                 <h1>Carona Solidária</h1>
                 <input type="text" id="nome" placeholder="Nome completo"/>
                 <input type="email" id="email" placeholder="Email"/>
+                <input type="text" id="curso" placeholder="Curso"/>
                 <input type="password" id="senha" placeholder="Senha"/>
                 <input type="submit" id="enviar" value="Enviar"/>
             </div>
