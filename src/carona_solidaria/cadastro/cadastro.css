@@ -35,3 +35,13 @@
 .container input[type="submit"]:hover {
   background-color: #4c0000;
 }
+
+.container select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
