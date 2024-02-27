@@ -1,17 +1,17 @@
 .nav-bar {
     display: flex;
     flex-direction: row;
-    height: 20%;
-    background-color: #B85E5E;
+    height: 70px;
+    background-color: #800000;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 #company-name {
     margin-left: 10px;
-    font-size: 35px;
-    margin-top: 0.7%;
-    margin-right: 15px;
+    font-size: 24px;
+    color: #fff;
 }
 
 #company-logo-nav {
@@ -20,26 +20,38 @@
 }
 
 #logo {
+    margin: 6px;
     margin-top: 4px;
     height: 30px;
-    width: 50px;
+    width: auto;
 }
 
 #profile-nav {
     display: flex;
     flex-direction: row;
-    margin-right: 1%;
+    margin-right: 10px;
 }
 
 #profile-picture {
     margin-left: 5px;
     margin-top: 4px;
-    height: 30px;
-    width: 30px;
-    border: solid black 1px;
-    border-radius: 80px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 #sair {
-    margin-left: 0.5%;
+    margin-left: 10px;
+    background-color: #fff;
+    color: #800000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sair:hover {
+    background-color: #e0e0e0;
 }

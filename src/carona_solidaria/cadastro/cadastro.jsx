@@ -1,4 +1,5 @@
 import './cadastro.css';
+import Nav from "../nav/nav";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -47,8 +48,9 @@ const Cadastro = () => {
 
     return(
         <body>
+            <Nav/>
             <div className="container">
-                <h1>Carona Solidária</h1>
+                <h1>Cadastro</h1>
                 <form id="cadastro">
                     <input type="text" id="nome" placeholder="Nome completo"/>
                     <input type="email" id="email" placeholder="Email"/>

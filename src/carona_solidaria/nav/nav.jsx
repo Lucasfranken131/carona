@@ -26,7 +26,7 @@ const Nav = () => {
         </div>
         <div id="profile-nav">
           <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" onClick={() => goToPerfil()} alt="perfil" id="profile-picture"></img>
-          <button id="sair" onClick={() => goToIndex()}>sair</button>
+          <button id="sair" onClick={() => goToIndex()}>Sair</button>
         </div>
       </nav>
     </div>

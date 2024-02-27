@@ -1,47 +1,53 @@
 .quadro {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; 
-    justify-content: center;
-    align-items: center;
-    height: 200%;
-    margin: auto;
-    margin-top: 5%;
-    border: 1px solid #ccc; 
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%; 
-  }
-  
-  .quadro h1{
-    margin: 1%;
-  }
-  
-  .quadro input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 1%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-  }
-  
-  .quadro input[type="submit"] {
-    background-color: #800000;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .quadro input[type="submit"]:hover {
-    background-color: #4c0000;
-  }
-  
-  .quadro select {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 1%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; 
+  justify-content: center;
+  align-items: center;
+  height: 200%;
+  margin: auto;
+  margin-top: 5%;
+  border: 1px solid #ccc; 
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%; 
+}
+
+.grupo-campos {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #800000; /* Bordô */
+}
+
+button {
+  background-color: #800000; /* Bordô */
+  color: #fff; /* Texto branco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #4c0000; /* Tom mais escuro de bordô */
+}
+
