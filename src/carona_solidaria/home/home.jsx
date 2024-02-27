@@ -8,17 +8,26 @@ const Home = () => {
 
     const [items, setItems] = useState([]);
     const [dataLength, setDataLength] = useState();
+    const [ error, setError ] = useState();
     const navigate = useNavigate();
 
-    const fetchData = () => {
-        axios.get('http://localhost:3001/chamada/findActives')
-        .then(res => {
-            const response = res.data;
-            console.log("Dados recebidos:", response);
+    const fetchData = async () => {
+        try {
+            await axios.get('http://localhost:3001/chamada/findActives')
+            .then(res => {
+                const response = res.data;
+                console.log("Dados recebidos:", response);
+            if(response) {
+                setError(false);
+            }
+            else {
+                setError(true);
+            }
+
             if (Array.isArray(response) || typeof response === 'object') {
                 const dataArray = Array.isArray(response) ? response : [response];
                 console.log("Tipo de dados é uma array ou objeto.");
-
+                
                 if (dataArray.length === 0) {
                     console.log("Final da página");
                 } else if (dataLength !== dataArray.length) {
@@ -27,8 +36,14 @@ const Home = () => {
                 }
             } else {
                 console.error("Os dados não são do tipo esperado (array ou objeto).");
+                setError(true);
             }
         });
+        }
+        catch (error) {
+            console.log('chamada inválida', error);
+            setError(true);
+        }
     }
 
     useEffect(() => {
@@ -39,18 +54,26 @@ const Home = () => {
         <div>
             <Nav/>
             <h1>Carona Solidária</h1>
+            {error ? 
+            (
             <div>
-                <button onClick={() => navigate('/criarChamada')}>Criar Chamada</button>
+                <h1>Não foi possível se conectar com o servidor</h1>
             </div>
-            <p>
-            {items.map(item => (
-                <React.Fragment key={item.id_call}> 
-                    <div className='chamada' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
-                            <div>{item.driver_name}</div>
-                    </div>
-                </React.Fragment>
-            ))}
-            </p>            
+            ) : (
+            <div>
+                <div><button onClick={() => navigate('/criarChamada')}>Criar Chamada</button></div>
+                <p>
+                {items.map(item => (
+                    <React.Fragment key={item.id_call}> 
+                        <div className='chamada' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
+                                <div>{item.driver_name}</div>
+                        </div>
+                    </React.Fragment>
+                ))}
+                </p>   
+            </div>
+            )}
+         
         </div>
     );
 }

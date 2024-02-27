@@ -46,32 +46,31 @@ const Cadastro = () => {
     }
 
     return(
-        <body>
-            <div className="container">
-                <h1>Carona Solidária</h1>
-                <form id="cadastro">
-                    <input type="text" id="nome" placeholder="Nome completo"/>
-                    <input type="email" id="email" placeholder="Email"/>
-                    <input type="password" id="senha" placeholder="Senha"/>
-                    <input type="number" id="idade" placeholder="Idade"/>
-                    <select id="genero" name="Gênero">
-                        <option value="mas">Masculino</option>
-                        <option value="fem">Feminino</option>
-                        <option value="outro">Outro</option>
-                        <option value="n/a">Prefiro não informar</option>
-                    </select>
-                    <input type="number" id="numero" placeholder='Número de Telefone'/>
-                    <select id="turno" name="Turno">
-                        <option value="mat">Matutino</option>
-                        <option value="ves">Vespertino</option>
-                        <option value="not">Noturno</option>
-                    </select>
-                    <input type='text' id='model' placeholder='Modelo do veículo'/>
-                    <input type='text' id='placa' placeholder='Placa do Veículo'/>
-                    <input type="submit" id="enviar" onClick={() => Enviar()} value="Cadastrar"/>
-                </form>
-            </div>
-        </body>
+        <div className="container">
+            <h1>Carona Solidária</h1>
+            <form id="cadastro">
+                <input type="text" id="nome" placeholder="Nome completo"/>
+                <input type="email" id="email" placeholder="Email"/>
+                <input type="password" id="senha" placeholder="Senha"/>
+                <input type="number" id="idade" placeholder="Idade"/>
+                <select id="genero" name="Gênero">
+                    <option value="mas">Masculino</option>
+                    <option value="fem">Feminino</option>
+                    <option value="outro">Outro</option>
+                    <option value="n/a">Prefiro não informar</option>
+                </select>
+                <input type="number" id="numero" placeholder='Número de Telefone'/>
+                <select id="turno" name="Turno">
+                    <option value="mat">Matutino</option>
+                    <option value="ves">Vespertino</option>
+                    <option value="not">Noturno</option>
+                </select>
+                <input type='text' id='model' placeholder='Modelo do veículo'/>
+                <input type='text' id='placa' placeholder='Placa do Veículo'/>
+                <input type="submit" id="enviar" onClick={() => Enviar()} value="Cadastrar"/>
+                <div onClick={() => navigate("/login")}>Já possui uma conta?<strong> clique aqui.</strong></div>
+            </form>
+        </div>
     );
 };
 

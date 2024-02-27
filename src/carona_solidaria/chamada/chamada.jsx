@@ -48,6 +48,7 @@ const Chamada = () => {
             });
         }
         catch (error) {
+            setError(true);
             console.log("Requisição de chamada inválida.", error);
         }
     } 
@@ -55,7 +56,7 @@ const Chamada = () => {
     return(
         <div>
             <Nav/>
-            {error ? 
+            { error ? 
                 (
                 <div>
                     <h1>Requisição inválida</h1>
