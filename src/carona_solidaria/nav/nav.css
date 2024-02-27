@@ -20,6 +20,7 @@
 }
 
 #logo {
+    filter: saturate(0%);
     margin: 6px;
     margin-top: 4px;
     height: 30px;
