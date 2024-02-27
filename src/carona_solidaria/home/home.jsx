@@ -11,7 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const fetchData = () => {
-        axios.get('http://localhost:3001/chamada')
+        axios.get('http://localhost:3001/chamada/findActives')
         .then(res => {
             const response = res.data;
             console.log("Dados recebidos:", response);
@@ -39,11 +39,14 @@ const Home = () => {
         <div>
             <Nav/>
             <h1>Carona Solidária</h1>
+            <div>
+                <button onClick={() => navigate('/criarChamada')}>Criar Chamada</button>
+            </div>
             <p>
             {items.map(item => (
                 <React.Fragment key={item.id_call}> 
-                    <div className='book' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
-                            <div>{item.id_driver}</div>
+                    <div className='chamada' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
+                            <div>{item.driver_name}</div>
                     </div>
                 </React.Fragment>
             ))}
