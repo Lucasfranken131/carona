@@ -47,6 +47,9 @@ const Cadastro = () => {
 
     return(
         <body>
+            <div id="company-logo-nav" onClick={() => navigate('/')}>
+                <img src="https://static.vecteezy.com/system/resources/previews/001/193/929/non_2x/vintage-car-png.png" id="logo" alt="logo"></img>
+            </div>
             <div className="container">
                 <h1>Cadastro</h1>
                 <form id="cadastro">
