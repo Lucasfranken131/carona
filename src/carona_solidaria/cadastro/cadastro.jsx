@@ -1,5 +1,4 @@
 import './cadastro.css';
-import Nav from "../nav/nav";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -48,7 +47,6 @@ const Cadastro = () => {
 
     return(
         <body>
-            <Nav/>
             <div className="container">
                 <h1>Cadastro</h1>
                 <form id="cadastro">
