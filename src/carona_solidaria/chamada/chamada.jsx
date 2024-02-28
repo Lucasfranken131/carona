@@ -45,6 +45,9 @@ const Chamada = () => {
                 const response = res.data;
                 setChamada(response)
                 console.log("Dados recebidos:", response);
+                <a href="https://api.whatsapp.com/send?phone=5548996146419">
+                Contato via WhatsApp
+                </a>
             });
         }
         catch (error) {
