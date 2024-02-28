@@ -1,3 +1,5 @@
+import Nav from '../nav/nav'
+
 const Perfil = () => {
     return(
         <div>

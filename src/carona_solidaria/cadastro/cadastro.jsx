@@ -69,6 +69,7 @@ const Cadastro = () => {
                     <input type='text' id='model' placeholder='Modelo do veículo'/>
                     <input type='text' id='placa' placeholder='Placa do Veículo'/>
                     <input type="submit" id="enviar" onClick={() => Enviar()} value="Cadastrar"/>
+                    <div onClick={() => navigate("/login")}>Já possui uma conta?<strong> clique aqui.</strong></div>
                 </form>
             </div>
         </body>
