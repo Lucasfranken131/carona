@@ -10,39 +10,29 @@ const Perfil = () => {
                     <title>Perfil</title>
                 </head>
                 <body>
-                    <div class="quadro">
+                    <div class="container">
                     <h1>Perfil</h1>
-                        <div class="grupo-campos">
-                            <form>
-                                <label for="nome">Nome:</label>
-                                <input type="text" id="nome" name="nome" required />
-
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required />
-
-                                <label for="cpf">CPF:</label>
-                                <input type="text" id="cpf" name="cpf" required />
-
-                                <label for="dataNascimento">Data de Nascimento:</label>
-                                <input type="date" id="dataNascimento" name="dataNascimento" required />
-
-                            </form>
-                        </div>
-
-                        <div class="grupo-campos">
-                            <form>
-                                <label for="sobrenome">Sobrenome:</label>
-                                <input type="text" id="sobrenome" name="sobrenome" required />
-
-                                <label for="genero">Gênero:</label>
-                                <input type="text" id="genero" name="genero" />
-
-                                <label for="telefone">Telefone:</label>
-                                <input type="tel" id="telefone" name="telefone" />
-
-                            </form>
-                        </div>
-                    <button type="submit">Editar</button>
+                        <form>
+                            <input type="text" id="nome" placeholder="Nome completo"/>
+                            <input type="email" id="email" placeholder="Email"/>
+                            <input type="password" id="senha" placeholder="Senha"/>
+                            <input type="number" id="idade" placeholder="Idade"/>
+                            <select id="genero" name="Gênero">
+                                <option value="mas">Masculino</option>
+                                <option value="fem">Feminino</option>
+                                <option value="outro">Outro</option>
+                                <option value="n/a">Prefiro não informar</option>
+                            </select>
+                            <input type="number" id="numero" placeholder='Número de Telefone'/>
+                            <select id="turno" name="Turno">
+                                <option value="mat">Matutino</option>
+                                <option value="ves">Vespertino</option>
+                                <option value="not">Noturno</option>
+                            </select>
+                            <input type='text' id='model' placeholder='Modelo do veículo'/>
+                            <input type='text' id='placa' placeholder='Placa do Veículo'/>
+                            <button type="submit">Editar</button>
+                        </form>
                     </div>
                 </body>
             </html>
