@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Cadastro = () => {
     const navigate = useNavigate();
     const [ hasCar, setHasCar ] = useState(false);
+    const [ error, setError ] = useState(false);
     
     // Estados para rastrear os valores dos campos de entrada
     const [formData, setFormData] = useState({
@@ -51,10 +52,12 @@ const Cadastro = () => {
                 const response = res.data;
                 console.log("Sua response:", response);
                 navigate(`/home`);
+                setError(false);
             });
 
         } catch (error) {
             console.log('Erro ao enviar o formulário:', error);
+            setError(true)
         }
     };
 
@@ -90,6 +93,7 @@ const Cadastro = () => {
                     <option value="Motorista">Motorista</option>
                 </select>
                 <input type='submit' onClick={() => createUser()} value="Cadastrar"/>
+                {error ? (<div>Cadastro inválido</div>) : (<div></div>)}
                 <div onClick={() => navigate("/login")}>Já possui uma conta? <strong>clique aqui.</strong></div>
         </div>
     );

@@ -7,6 +7,7 @@ import Home from "./carona_solidaria/home/home";
 import Index from './carona_solidaria/index/index';
 import Login from "./carona_solidaria/login/login";
 import Perfil from './carona_solidaria/perfil/perfil';
+import CriarChamada from './carona_solidaria/chamada/criarChamada';
 
 function AppRoutes(){
    return(
@@ -16,6 +17,7 @@ function AppRoutes(){
                 <Routes>
                     <Route element = { <Cadastro/> }  path="/cadastro" />
                     <Route element = { <Chamada/> } path="/chamada" />
+                    <Route element = { <CriarChamada/> } />
                     <Route element = { <Index/> } path="/" />
                     <Route element = { <Home/> }  path="/home" exact />
                     <Route element = { <Login/> }  path="/login" />

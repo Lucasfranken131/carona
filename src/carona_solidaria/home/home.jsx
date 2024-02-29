@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
+    const queryParameters = new URLSearchParams(window.location.search);
+    const userId = queryParameters.get("id");
     const [items, setItems] = useState([]);
     const [dataLength, setDataLength] = useState();
     const [ error, setError ] = useState();
@@ -61,7 +63,7 @@ const Home = () => {
             </div>
             ) : (
             <div>
-                <div><button onClick={() => navigate('/criarChamada')}>Criar Chamada</button></div>
+                <div><button onClick={() => navigate(`/criarChamada?user=${userId}`)}>Criar Chamada</button></div>
                 <p>
                 {items.map(item => (
                     <React.Fragment key={item.id_call}> 
