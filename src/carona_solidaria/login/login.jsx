@@ -8,6 +8,12 @@ const Login = () => {
     const navigate = useNavigate();
     const [ error, setError ] = useState(false)
 
+    const setCookies = () => {
+        Cookies.set('userId', response.id_user);
+        Cookies.set('email', response.email);
+        Cookies.set('password', response.password);
+    }
+
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -26,11 +32,10 @@ const Login = () => {
             await axios.post(`http://localhost:3001/usuario/login`, formData)
             .then(res => {
                 const response = res.data;
-                Cookies.set('email', formData.email);
-                Cookies.set('password', formData.password);
+                setCookies();
                 console.log(response);
                 navigate("/home");
-                setError(false)
+                setError(false);
             })
         }
         catch (error) {

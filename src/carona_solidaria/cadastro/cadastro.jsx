@@ -34,9 +34,7 @@ const Cadastro = () => {
     const checkCar = () => {
         if(hasCar == false) {
             setFormData({ ...formData, car_model: '', plate: '' })
-
             setHasCar(true)
-
         }
         else {
             setFormData({ ...formData, car_model: 'Não possui', plate: 'Não possui' })
@@ -50,6 +48,9 @@ const Cadastro = () => {
             await axios.post('http://localhost:3001/usuario/createOne', formData)
             .then(res => {
                 const response = res.data;
+                Cookies.set('userId', response.id_user);
+                Cookies.set('email', response.email);
+                Cookies.set('password', response.password);
                 console.log("Sua response:", response);
                 navigate(`/home`);
                 setError(false);

@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import "./nav.css";
+import Cookies from 'js-cookies';
 
 const Nav = () => {
+  const userId = Cookies.get('id_user');
   const navigate = useNavigate();
 
   const goToPerfil = () => {
-    navigate("/perfil");
+    navigate(`/perfil?user=${userId}`);
   }
 
   const goToHome = () => {
@@ -15,7 +17,12 @@ const Nav = () => {
 
   const goToIndex = () => {
     navigate("/");
+    Cookies.removeItem('userId');
+    Cookies.removeItem('email');
+    Cookies.removePassword('password');
   }
+
+
 
   return (
     <div>
