@@ -67,8 +67,8 @@ const Chamada = () => {
                 ) : (   
                 <div className='call-info'>
                     <h1><div>Chamada de Viagem</div></h1><hr/>
-                    <div>Motorista: {chamada.driver_name}</div>
-                    <div>Passageiro: {chamada.passenger_name}</div>
+                    <div>Motorista: {chamada.call_creator}</div>
+                    <div>Passageiro: {chamada.call_acceptor}</div>
                     <div>Início da Viagem: {chamada.initial_location}</div>
                     <div>Destino da Viagem: {chamada.final_location}</div>
                     <div>Data de criação da Chamada: {chamada.call_date}</div>

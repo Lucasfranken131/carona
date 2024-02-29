@@ -17,8 +17,8 @@ const Cadastro = () => {
         sex: 'Masculino',
         phone_number: '',
         turn: 'Matutino',
-        car_model: '',
-        plate: '',
+        car_model: 'Não possui',
+        plate: 'Não possui',
         user_type: 'Passageiro'
     });
 
@@ -33,35 +33,35 @@ const Cadastro = () => {
 
     const checkCar = () => {
         if(hasCar == false) {
-            setFormData.car_model = 'Não possui';
-            setFormData.plate = 'Não possui';
+            setFormData({ ...formData, car_model: '', plate: '' })
+
             setHasCar(true)
 
         }
         else {
-            setHasCar(true)
-            setFormData(formData.car_model = '');
-            setFormData(formData.plate = '');
+            setFormData({ ...formData, car_model: 'Não possui', plate: 'Não possui' })
+            setHasCar(false)
         }
     }
  
-    // Função para enviar o formulário
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Impede o comportamento padrão do envio do formulário
-        
+    const createUser = async () => {
         try {
-            await axios.post('http://localhost:3001/usuario/createOne', formData);
-            navigate(`/home`);
+            console.log("Seus dados antes de serem enviados:", formData)
+            await axios.post('http://localhost:3001/usuario/createOne', formData)
+            .then(res => {
+                const response = res.data;
+                console.log("Sua response:", response);
+                navigate(`/home`);
+            });
+
         } catch (error) {
-            console.error('Erro ao enviar o formulário:', error);
+            console.log('Erro ao enviar o formulário:', error);
         }
-        console.log(formData)
     };
 
     return (
         <div className="container">
             <h1>Cadastro</h1>
-            <form onSubmit={handleSubmit}>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Nome completo" required />
                 <input type="text" name="cpf" value={formData.cpf} onChange={handleInputChange} placeholder="CPF" required maxLength={14}/>
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email" required />
@@ -79,7 +79,7 @@ const Cadastro = () => {
                     <option value="Vespertino">Vespertino</option>
                     <option value="Noturno">Noturno</option>
                 </select>
-                <label>Possui carro:<input type="checkbox" name="hasCar" Checked={formData.hasCar} onClick={() => checkCar()} /></label>
+                <div>Possui carro:<input type="checkbox" name="hasCar" checked={formData.hasCar} onClick={() => checkCar()} /></div>
                 {hasCar ? (  // Renderizar os campos relacionados ao carro se hasCar for true
                     <>
                         <input type="text" name="car_model" value={formData.car_model} onChange={handleInputChange} placeholder="Modelo do veículo" required />
@@ -90,9 +90,8 @@ const Cadastro = () => {
                     <option value="Passageiro">Passageiro</option>
                     <option value="Motorista">Motorista</option>
                 </select>
-                <input type="submit" value="Cadastrar" />
+                <input type='submit' onClick={() => createUser()} value="Cadastrar"/>
                 <div onClick={() => navigate("/login")}>Já possui uma conta? <strong>clique aqui.</strong></div>
-            </form>
         </div>
     );
 };
