@@ -1,0 +1,10 @@
+.chamada {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    margin: 5px;
+}
+
+.valores-chamada {
+    margin-right: 20px;
+}

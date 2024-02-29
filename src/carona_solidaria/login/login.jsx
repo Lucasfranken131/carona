@@ -1,31 +1,45 @@
 import React from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate();
-    const login = async () => {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
 
-        const values = {
-            email: email,
-            password: password
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const log_in = async () => {
+        try {
+            await axios.post(`http://localhost:3001/usuario/login`, formData)
+            .then(res => {
+                const response = res.data;
+                console.log(response);
+                navigate("/home");
+            })
         }
-
-        await axios.post(`http://localhost:3001/login`, values)
-        .then(res => {
-            const response = res.data;
-            console.log(response);
-        })
+        catch (error) {
+            console.log(formData)
+            console.log("Erro na requisição:", error)
+        }
     }
 
     return(
         <div className="container">
             <h1>Login</h1>
-            <input type="text" id="email" placeholder="Email"/>
-            <input type="text" id="password"placeholder="Senha"/>
-            <input type="submit" onClick={() => login()}value="Login"/>
+            <input type="text" value={formData.email} name="email" placeholder="Email" onChange={handleInputChange}/>
+            <input type="text" value={formData.password} name="password" placeholder="Senha" onChange={handleInputChange}/>
+            <input type="submit" onClick={() => log_in()}value="Login"/>
             <div onClick={() => navigate("/cadastro")}>Não possui uma conta?<strong> clique aqui.</strong></div>
         </div>
     );

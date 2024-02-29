@@ -66,7 +66,9 @@ const Home = () => {
                 {items.map(item => (
                     <React.Fragment key={item.id_call}> 
                         <div className='chamada' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
-                                <div>{item.driver_name}</div>
+                                <div className='valores-chamada'>Criador da chamada: {item.call_creator}</div>
+                                <div className='valores-chamada'>Ponto de partida: {item.initial_location}</div>
+                                <div className='valores-chamada'>Ponto de chegada: {item.final_location}</div>
                         </div>
                     </React.Fragment>
                 ))}

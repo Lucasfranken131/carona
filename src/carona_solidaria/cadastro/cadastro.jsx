@@ -22,7 +22,6 @@ const Cadastro = () => {
         user_type: 'Passageiro'
     });
 
-    // Função para manipular a mudança nos campos de entrada
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
