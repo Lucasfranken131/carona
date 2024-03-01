@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 const CriarChamada = () => {
 
-    const userId = Cookies.get("userId");
     const navigate = useNavigate();
     const phoneNumber = Cookies.get("phoneNumber");
     const userName = Cookies.get("name");
