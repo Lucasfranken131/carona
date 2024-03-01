@@ -1,10 +1,71 @@
-.chamada {
-    display: flex;
-    flex-direction: row;
-    border: 2px solid black;
-    margin: 5px;
+.inside_chamada {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; 
+    justify-content: center;
+    align-items: center;
+    height: 200%;
+    margin: auto;
+    margin-top: 5%;
+    border: 1px solid #ccc; 
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+  }
+  
+  .inside_chamada h1 {
+    margin: 1%;
+  }
+  
+  .inside_chamada button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 1%;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inside_chamada button:hover {
+    background-color: #2b2b2b;
+  }
+
+  .criar-chamada-button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 1%;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.valores-chamada {
-    margin-right: 20px;
+.criar-chamada-button:hover {
+    background-color: #2b2b2b;
 }
+  
+  .chamada-info {
+    display: flex;
+    font-family: sans-serif;
+    background-color: #eaeaea;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chamada-label {
+    width: 50%;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .chamada-value {
+    width: 70%;
+  }
+  

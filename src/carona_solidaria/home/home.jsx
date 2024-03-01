@@ -1,49 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../nav/nav';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import './home.css'; // Importando o arquivo de estilos CSS
 
 const Home = () => {
-
-    const userId = Cookies.get("userId")
+    const userId = Cookies.get("userId");
     const [items, setItems] = useState([]);
-    const [dataLength, setDataLength] = useState();
-    const [ error, setError ] = useState();
+    const [error, setError] = useState();
     const navigate = useNavigate();
 
     const fetchData = async () => {
         try {
-            await axios.get('http://localhost:3001/chamada/findActives')
-            .then(res => {
-                const response = res.data;
-                console.log("Dados recebidos:", response);
-            if(response) {
-                setError(false);
-            }
-            else {
-                setError(true);
-            }
+            const res = await axios.get('http://localhost:3001/chamada/findActives');
+            const response = res.data;
+            console.log("Dados recebidos:", response);
 
-            if (Array.isArray(response) || typeof response === 'object') {
-                const dataArray = Array.isArray(response) ? response : [response];
-                console.log("Tipo de dados é uma array ou objeto.");
-                
-                if (dataArray.length === 0) {
-                    console.log("Final da página");
-                } else if (dataLength !== dataArray.length) {
-                    setDataLength(dataArray.length);
-                    setItems(prevItems => [...prevItems, ...dataArray]);
-                }
+            if (response) {
+                setError(false);
+                setItems(response);
             } else {
-                console.error("Os dados não são do tipo esperado (array ou objeto).");
                 setError(true);
             }
-        });
-        }
-        catch (error) {
-            console.log('chamada inválida', error);
+        } catch (error) {
+            console.log('Chamada inválida', error);
             setError(true);
         }
     }
@@ -52,32 +33,37 @@ const Home = () => {
         fetchData();
     }, []);
 
-    return(
+    return (
         <div>
-            <Nav/>
+            <Nav />
             <h1>Carona Solidária</h1>
-            {error ? 
-            (
-            <div>
-                <h1>Não foi possível se conectar com o servidor</h1>
-            </div>
+            {error ? (
+                <div>
+                    <h1>Não foi possível se conectar com o servidor</h1>
+                </div>
             ) : (
-            <div>
-                <div><button onClick={() => navigate(`/chamada/criarChamada?user=${userId}`)}>Criar Chamada</button></div>
-                <p>
-                {items.map(item => (
-                    <React.Fragment key={item.id_call}> 
-                        <div className='chamada' onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
-                            <div className='valores-chamada'>Criador da chamada: {item.call_creator}</div>
-                            <div className='valores-chamada'>Ponto de partida: {item.initial_location}</div>
-                            <div className='valores-chamada'>Ponto de chegada: {item.final_location}</div>
-                        </div>
-                    </React.Fragment>
-                ))}
-                </p>   
-            </div>
+                <div>
+                    <div><button className="submit-button" onClick={() => navigate(`/chamada/criarChamada?user=${userId}`)}>Criar Chamada</button></div>
+                    <div className="chamada-list">
+                        {items.map(item => (
+                            <div className='chamada' key={item.id_call} onClick={() => navigate(`/chamada?id=${item.id_call}`)}>
+                                <div className='chamada-info'>
+                                    <div className='chamada-label'>Criador da chamada:</div>
+                                    <div className='chamada-value'>{item.call_creator}</div>
+                                </div>
+                                <div className='chamada-info'>
+                                    <div className='chamada-label'>Ponto de partida:</div>
+                                    <div className='chamada-value'>{item.initial_location}</div>
+                                </div>
+                                <div className='chamada-info'>
+                                    <div className='chamada-label'>Ponto de chegada:</div>
+                                    <div className='chamada-value'>{item.final_location}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             )}
-         
         </div>
     );
 }

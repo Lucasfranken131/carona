@@ -9,7 +9,7 @@
   border: 1px solid #ccc; 
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%; 
+  width: 50%; 
 }
 
 .container h1{
@@ -27,13 +27,13 @@
 }
 
 .container input[type="submit"] {
-  background-color: #800000;
+  background-color: #000000;
   color: #fff;
   cursor: pointer;
 }
 
 .container input[type="submit"]:hover {
-  background-color: #4c0000;
+  background-color: #2b2b2b;
 }
 
 .container select {

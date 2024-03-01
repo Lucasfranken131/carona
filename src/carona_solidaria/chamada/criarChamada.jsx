@@ -54,7 +54,7 @@ const CriarChamada = () => {
                 <h1><div>Chamada de Viagem</div></h1><hr/>
                 <div><input type="text" name="initial_location" onChange={handleInputChange} value={formData.initial_location} placeholder='Ponto de partida'/></div>
                 <div><input type="text" name="final_location" onChange={handleInputChange} value={formData.final_location} placeholder='Ponto final'/></div>
-                <div><button onClick={() => postChamada()}>Aceitar Chamada</button></div>
+                <div><button className="criar-chamada-button" onClick={() => postChamada()}>Criar Chamada</button></div>
             </div>
         </div>
     )

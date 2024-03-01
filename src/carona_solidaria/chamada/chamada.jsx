@@ -1,33 +1,30 @@
 import Nav from '../nav/nav';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './chamada.css';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const Chamada = () => {
-
     const queryParameters = new URLSearchParams(window.location.search);
     const id = queryParameters.get("id");
     const name = Cookies.get("name");
-    const [ chamada, setChamada ] = useState([]);
-    const [ error, setError] = useState();
+    const [chamada, setChamada] = useState([]);
+    const [error, setError] = useState();
+    const navigate = useNavigate();
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://localhost:3001/chamada/findOne/${id}`)
+            const res = await axios.get(`http://localhost:3001/chamada/findOne/${id}`);
             const response = res.data[0];
-            if(response) {
-                setChamada(response)
+            if (response) {
+                setChamada(response);
                 setError(false);
                 console.log("Dados recebidos:", response);
-            }
-            else {
+            } else {
                 setError(true);
             }
-        }
-        catch (error) {
+        } catch (error) {
             setError(true);
             console.log("Requisição de chamada inválida.", error);
         }
@@ -44,39 +41,48 @@ const Chamada = () => {
             call_acceptor: name
         }
         try {
-            await axios.put(`http://localhost:3001/chamada/updateOne/${id}`, putResponse)
-            .then(res => {
-                const response = res.data;
-                console.log("Dados recebidos 2:", response);
-                window.location.replace(`https://api.whatsapp.com/send?phone=55489${chamada.call_creator_number}`)
-            });
-        }
-        catch (error) {
+            await axios.put(`http://localhost:3001/chamada/updateOne/${id}`, putResponse);
+            navigate(`https://api.whatsapp.com/send?phone=55489${chamada.call_creator_number}`);
+        } catch (error) {
             setError(true);
             console.log("Requisição de chamada inválida.", error);
         }
-    } 
+    }
 
-    return(
+    return (
         <div>
-            <Nav/>
-            { error ? 
-                (
+            <Nav />
+            {error ? (
                 <div>
                     <h1>Requisição inválida</h1>
                 </div>
-                ) : (   
-                <div className='call-info'>
-                    <h1><div>Chamada de Viagem</div></h1><hr/>
-                    <div>Motorista: {chamada.call_creator}</div>
-                    <div>Passageiro: {chamada.call_acceptor}</div>
-                    <div>Início da Viagem: {chamada.initial_location}</div>
-                    <div>Destino da Viagem: {chamada.final_location}</div>
-                    <div>Data de criação da Chamada: {chamada.call_date}</div>
-                    <div><button onClick={() => aceitarChamada()}>Aceitar Chamada</button></div>
+            ) : (
+                <div className='inside_chamada'>
+                    <h1>Chamada de Viagem</h1>
+                    <hr />
+                    <div className="chamada-info">
+                        <div className="chamada-label">Motorista:</div>
+                        <div className="chamada-value">{chamada.call_creator}</div>
+                    </div>
+                    <div className="chamada-info">
+                        <div className="chamada-label">Passageiro:</div>
+                        <div className="chamada-value">{chamada.call_acceptor}</div>
+                    </div>
+                    <div className="chamada-info">
+                        <div className="chamada-label">Início da Viagem:</div>
+                        <div className="chamada-value">{chamada.initial_location}</div>
+                    </div>
+                    <div className="chamada-info">
+                        <div className="chamada-label">Destino da Viagem:</div>
+                        <div className="chamada-value">{chamada.final_location}</div>
+                    </div>
+                    <div className="chamada-info">
+                        <div className="chamada-label">Data de criação da Chamada:</div>
+                        <div className="chamada-value">{chamada.call_date}</div>
+                    </div>
+                    <div><button onClick={aceitarChamada}>Aceitar Chamada</button></div>
                 </div>
-                )
-            }
+            )}
         </div>
     )
 };
