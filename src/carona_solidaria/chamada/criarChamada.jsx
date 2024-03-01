@@ -3,11 +3,15 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './chamada.css';
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom';
 
 const CriarChamada = () => {
 
-    const queryParameters = new URLSearchParams(window.location.search);
-    const userId = queryParameters.get("id");
+    const userId = Cookies.get("userId");
+    const navigate = useNavigate();
+    const phoneNumber = Cookies.get("phoneNumber");
+    const userName = Cookies.get("name");
     const [ chamada, setChamada ] = useState([]);
     const [ error, setError] = useState();
 
@@ -20,8 +24,9 @@ const CriarChamada = () => {
     };
 
     const [ formData, setFormData ] = useState({
-        call_creator: userId,
+        call_creator: userName,
         call_acceptor: "Disponível",
+        call_creator_number: phoneNumber,
         initial_location: '',
         final_location: '',
     });
@@ -33,14 +38,13 @@ const CriarChamada = () => {
                 const response = res.data;
                 setChamada(response)
                 console.log("Dados recebidos:", response);
-                <a href="https://api.whatsapp.com/send?phone=5548996146419">
-                Contato via WhatsApp
-                </a>
+                navigate("/home");
             });
         }
         catch (error) {
             setError(true);
             console.log("Requisição de chamada inválida.", error);
+            console.log(formData)
         }
     } 
 
@@ -49,8 +53,8 @@ const CriarChamada = () => {
             <Nav/> 
             <div className='container'>
                 <h1><div>Chamada de Viagem</div></h1><hr/>
-                <div><input type="text" name="initial_location" value={formData.initial_location}/></div>
-                <div><input type="text" name="final_location" value={formData.final_location}/></div>
+                <div><input type="text" name="initial_location" onChange={handleInputChange} value={formData.initial_location} placeholder='Ponto de partida'/></div>
+                <div><input type="text" name="final_location" onChange={handleInputChange} value={formData.final_location} placeholder='Ponto final'/></div>
                 <div><button onClick={() => postChamada()}>Aceitar Chamada</button></div>
             </div>
         </div>

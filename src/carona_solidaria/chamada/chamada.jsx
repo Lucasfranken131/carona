@@ -3,11 +3,14 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './chamada.css';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Chamada = () => {
 
     const queryParameters = new URLSearchParams(window.location.search);
     const id = queryParameters.get("id");
+    const name = Cookies.get("name");
     const [ chamada, setChamada ] = useState([]);
     const [ error, setError] = useState();
 
@@ -37,17 +40,15 @@ const Chamada = () => {
     const aceitarChamada = async () => {
         const putResponse = {
             ...chamada,
-            active: "inativo"
+            active: "inativo",
+            call_acceptor: name
         }
         try {
             await axios.put(`http://localhost:3001/chamada/updateOne/${id}`, putResponse)
             .then(res => {
                 const response = res.data;
-                setChamada(response)
-                console.log("Dados recebidos:", response);
-                <a href="https://api.whatsapp.com/send?phone=5548996146419">
-                Contato via WhatsApp
-                </a>
+                console.log("Dados recebidos 2:", response);
+                window.location.replace(`https://api.whatsapp.com/send?phone=55489${chamada.call_creator_number}`)
             });
         }
         catch (error) {

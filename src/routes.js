@@ -8,6 +8,7 @@ import Index from './carona_solidaria/index/index';
 import Login from "./carona_solidaria/login/login";
 import Perfil from './carona_solidaria/perfil/perfil';
 import CriarChamada from './carona_solidaria/chamada/criarChamada';
+import Zap from './carona_solidaria/chamada/zap';
 
 function AppRoutes(){
    return(
@@ -17,7 +18,8 @@ function AppRoutes(){
                 <Routes>
                     <Route element = { <Cadastro/> }  path="/cadastro" />
                     <Route element = { <Chamada/> } path="/chamada" />
-                    <Route element = { <CriarChamada/> } />
+                    <Route element = { <CriarChamada/> } path="/chamada/criarchamada" />
+                    <Route element = { <Zap/> } path="/chamada/whatsapp" />
                     <Route element = { <Index/> } path="/" />
                     <Route element = { <Home/> }  path="/home" exact />
                     <Route element = { <Login/> }  path="/login" />

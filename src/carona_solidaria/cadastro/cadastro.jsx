@@ -2,6 +2,7 @@ import './cadastro.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const Cadastro = () => {
     const navigate = useNavigate();
@@ -51,6 +52,8 @@ const Cadastro = () => {
                 Cookies.set('userId', response.id_user);
                 Cookies.set('email', response.email);
                 Cookies.set('password', response.password);
+                Cookies.set('phoneNumber', response.phone_number);
+                Cookies.set('name', response.name);
                 console.log("Sua response:", response);
                 navigate(`/home`);
                 setError(false);

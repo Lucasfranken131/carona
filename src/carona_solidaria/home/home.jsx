@@ -3,11 +3,11 @@ import Nav from '../nav/nav';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Home = () => {
 
-    const queryParameters = new URLSearchParams(window.location.search);
-    const userId = queryParameters.get("id");
+    const userId = Cookies.get("userId")
     const [items, setItems] = useState([]);
     const [dataLength, setDataLength] = useState();
     const [ error, setError ] = useState();
@@ -63,7 +63,7 @@ const Home = () => {
             </div>
             ) : (
             <div>
-                <div><button onClick={() => navigate(`/criarChamada?user=${userId}`)}>Criar Chamada</button></div>
+                <div><button onClick={() => navigate(`/chamada/criarChamada?user=${userId}`)}>Criar Chamada</button></div>
                 <p>
                 {items.map(item => (
                     <React.Fragment key={item.id_call}> 
